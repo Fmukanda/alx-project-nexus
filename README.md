@@ -153,3 +153,22 @@ GET /api/products/products/featured/ - Get featured products
 GET /api/products/products/on_sale/ - Get products on sale
 
 GET /api/products/reviews/ - List all reviews
+
+
+Cart Endpoints:
+GET /api/orders/cart/ - Get user's cart
+
+POST /api/orders/cart/add_item/ - Add item to cart
+
+PUT /api/orders/cart/update_item/ - Update cart item quantity
+
+DELETE /api/orders/cart/remove_item/ - Remove item from cart
+
+DELETE /api/orders/cart/clear/ - Clear entire cart
+
+Order Endpoints:
+GET /api/orders/orders/ - List user's orders
+
+GET /api/orders/orders/{id}/ - Get order details
+
+POST /api/orders/orders/create_from_cart/ - Create order from cart
