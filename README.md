@@ -172,3 +172,23 @@ GET /api/orders/orders/ - List user's orders
 GET /api/orders/orders/{id}/ - Get order details
 
 POST /api/orders/orders/create_from_cart/ - Create order from cart
+
+
+POST /api/payments/payments/stripe_create_intent/ - Create Stripe payment intent
+
+POST /api/payments/payments/mpesa_initiate/ - Initiate M-Pesa payment
+
+POST /api/payments/payments/paypal_create_order/ - Create PayPal order
+
+POST /api/payments/payments/paypal_capture/ - Capture PayPal payment
+
+POST /api/payments/mpesa-callback/callback/ - M-Pesa webhook
+
+Wishlist:
+GET /api/products/wishlist/ - Get user wishlist
+
+POST /api/products/wishlist/ - Add to wishlist
+
+DELETE /api/products/wishlist/{id}/ - Remove from wishlist
+
+DELETE /api/products/wishlist/remove_product/ - Remove by product ID
