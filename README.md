@@ -192,3 +192,32 @@ POST /api/products/wishlist/ - Add to wishlist
 DELETE /api/products/wishlist/{id}/ - Remove from wishlist
 
 DELETE /api/products/wishlist/remove_product/ - Remove by product ID
+
+Dashboard:
+GET /api/inventory/dashboard/summary/ - Inventory summary
+
+POST /api/inventory/dashboard/manual_adjustment/ - Manual stock adjustment
+
+Inventory Logs:
+GET /api/inventory/inventory-logs/ - List inventory logs
+
+GET /api/inventory/inventory-logs/{id}/ - Get inventory log details
+
+Stock Alerts:
+GET /api/inventory/stock-alerts/ - List stock alerts
+
+POST /api/inventory/stock-alerts/{id}/resolve/ - Resolve stock alert
+
+Purchase Orders:
+GET /api/inventory/purchase-orders/ - List purchase orders
+
+POST /api/inventory/purchase-orders/ - Create purchase order
+
+POST /api/inventory/purchase-orders/{id}/receive/ - Receive purchase order items
+
+Stock Transfers:
+GET /api/inventory/stock-transfers/ - List stock transfers
+
+POST /api/inventory/stock-transfers/ - Create stock transfer
+
+POST /api/inventory/stock-transfers/{id}/complete/ - Complete stock transfer
