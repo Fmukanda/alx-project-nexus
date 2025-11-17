@@ -261,7 +261,22 @@ frontend/
  - **components/cart/** → _CartPage, CartItem_
  - **components/admin/** → _AdminDashboard (charts & real-time)_
  - **app/pages/** → _pages routing: login, register, password reset, checkout, orders_
-  
+
+### 📊 Frontend Components
+ - **ProductCard** → _Displays product info + wishlist button_
+ - **CategoryFilter** → _Sidebar dropdown for filtering_
+ - **ProductReview / ReviewForm** → _Display & submit reviews_
+ - **WishlistButton** → _Icon to add/remove product_
+ - **WishlistPage** → _Lists all wishlist products_
+ - **CartPage** → _Add/remove/update items_
+ - **CheckoutPage** → _Review cart and pay via Mpesa_
+ - **OrderHistoryPage** → _View past orders_
+ - **AdminDashboard** → _KPIs, revenue charts, real-time order/payment updates_
+
+### Admin Dashboard (Real-Time)
+ - **WebSocket:** /ws/admin/dashboard/
+ - **Receives real-time updates on orders, payments, shipments**
+
 ## 📝 License
 This project is licensed under MIT License.
 
