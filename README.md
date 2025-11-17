@@ -92,7 +92,7 @@ frontend/
 │  └──────────────────────────────────────────┘   │
 │  ┌──────────────────────────────────────────┐   │
 │  │          Business Logic Layer            │   │
-│  │  - Inventory Validation                  │   │                  
+│  │  - Validation                            │   │                  
 │  │  - Shipment Management                   │   │
 │  │  - Notifications & Analytics             │   │
 │  └──────────────────────────────────────────┘   │
@@ -112,5 +112,73 @@ frontend/
  - Node.js 18+
  - PostgreSQL 13+
  - Redis 6+
-# Product recommendations
-GET /api/products/products/product-slug/recommendations/
+
+### Backend Setup
+1. **Clone the repository**
+   ```
+   git clone <repository-url>
+   cd backend
+   ```
+
+2. **Create virtual environment**
+   ```
+   python -m venv venv
+   source venv/bin/activate   # Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```
+   pip install -r requirements/development.txt
+   ```
+
+4. **Configure environment variables**
+   ```
+   cp .env.example .env
+   # Update DB, Redis, JWT secret, Mpesa keys
+   ```
+
+5. **Setup database**
+   ```
+   python manage.py migrate
+   python manage.py createsuperuser
+   python manage.py collectstatic
+   ```
+
+6. **Load example seed data (optional)**
+   ```
+   python manage.py loaddata seed_data.json
+   ```
+
+7. **Run development server**
+   ```
+   python manage.py runserver
+   ```
+   
+### Frontend Setup
+1. **Navigate to frontend**
+   ```
+   cd ../frontend
+   ```
+
+2. **Install dependencies**
+   ```
+   npm install
+   ```
+
+3. **Configure environment variables**
+   ```
+   cp .env.example .env.local
+   # Set NEXT_PUBLIC_API_URL=http://localhost:8000/api
+   ```
+
+4. **Configure environment variables**
+   ```
+   npm run dev
+   ```
+
+### Docker Setup
+   ```
+   docker-compose up -d
+   ```
+
+## 📦 API Endpoints
