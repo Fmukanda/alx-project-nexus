@@ -244,6 +244,23 @@ frontend/
   |:-------------------------------- | :-------|:----------------------------------|
   |/api/shipments/             | GET     | List shipments          |
   |/api/shipments/<id>/ | GET     | Shipment details    |
+
+### Backend Endpoints
+ - **apps/users/** → _authentication (JWT, reset)_
+ - **apps/products/** → _models: Product, Category, Review_
+ - **apps/wishlist/** → _user wishlist logic_
+ - **apps/cart/** → _cart CRUD + server-side inventory check_
+ - **apps/orders/** → _checkout & order creation_
+ - **apps/payments/** → _Mpesa integration_
+ - **apps/shipments/** → _shipment tracking_
+ - **apps/notifications/** → _WebSockets for real-time updates_
+
+### Frontend Endpoints
+ - **components/products/** → _ProductCard, ReviewForm_
+ - **components/wishlist/** → _WishlistButton, WishlistPage_
+ - **components/cart/** → _CartPage, CartItem_
+ - **components/admin/** → _AdminDashboard (charts & real-time)_
+ - **app/pages/** → _pages routing: login, register, password reset, checkout, orders_
   
 ## 📝 License
 This project is licensed under MIT License.
