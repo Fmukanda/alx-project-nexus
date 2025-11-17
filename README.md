@@ -178,10 +178,14 @@ frontend/
    npm run dev
    ```
 
-### Docker Setup
+### 🐳 Docker Setup
    ```
    docker-compose up -d
    ```
+### Docker Commands
+ - Start services: docker-compose up -d
+ - Run backend migrations: docker-compose exec backend python manage.py migrate
+ - Create superuser: docker-compose exec backend python manage.py createsuperuser
 
 ## 📦 API Endpoints
 ### 1. Authentication (JWT)
@@ -241,3 +245,10 @@ frontend/
   |/api/shipments/             | GET     | List shipments          |
   |/api/shipments/<id>/ | GET     | Shipment details    |
   
+## 📝 License
+This project is licensed under MIT License.
+
+## 🙏 Acknowledgments
+ - Django & Django REST Framework
+ - Next.js & React ecosystem
+ - Tailwind CSS 
