@@ -245,7 +245,7 @@ frontend/
   |/api/shipments/             | GET     | List shipments          |
   |/api/shipments/<id>/ | GET     | Shipment details    |
 
-### Backend Endpoints
+### 🔧 Backend API Endpoints
  - **apps/users/** → _authentication (JWT, reset)_
  - **apps/products/** → _models: Product, Category, Review_
  - **apps/wishlist/** → _user wishlist logic_
@@ -255,7 +255,7 @@ frontend/
  - **apps/shipments/** → _shipment tracking_
  - **apps/notifications/** → _WebSockets for real-time updates_
 
-### Frontend Endpoints
+### 🔧 Frontend API Endpoints
  - **components/products/** → _ProductCard, ReviewForm_
  - **components/wishlist/** → _WishlistButton, WishlistPage_
  - **components/cart/** → _CartPage, CartItem_
