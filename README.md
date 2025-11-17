@@ -105,7 +105,7 @@ frontend/
      │  - Orders, Payments, Inventory   │
      └──────────────────────────────────┘
 ```
-## Database ERD 
+## 🗃️ Database Schema
 ![image alt](Image/ERD_Image.png)
 
 ## ⚙️ Setup Instructions
@@ -182,7 +182,7 @@ frontend/
    ```
    docker-compose up -d
    ```
-### Docker Commands
+ **Docker Commands**
  - Start services: docker-compose up -d
  - Run backend migrations: docker-compose exec backend python manage.py migrate
  - Create superuser: docker-compose exec backend python manage.py createsuperuser
