@@ -182,3 +182,60 @@ frontend/
    ```
 
 ## 📦 API Endpoints
+### Authentication (JWT)
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/auth/register/               | POST    | Create new user                   |
+  |/api/auth/login/                  | POST    | Authenticate user & get JWT token |
+  |/api/auth/password-reset/         | POST    | Request password reset            |
+  |/api/auth/password-reset/confirm/ | POST    | Reset password with token         |
+  
+ ### Products & Categories
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/products/                    | GET     | List all products                 |
+  |/api/products/?category=<slug>    | GET     | Filter by category                |
+  |/api/products/<id>/               | GET     | Product details                   |
+  |/api/products/categories/         | GET     | List categories                   | 
+  |/api/products/categories/         | POST    | Create category (admin only)      | 
+
+### Reviews
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/products/<id>/reviews/       | GET     | List reviews for product          |
+  |/api/products/<id>/reviews/       | POST    | Create review (authenticated)     |
+
+### Wishlist
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/products/wishlist/           | GET     | Get user wishlist                 |
+  |/api/products/wishlist/           | POST    | Add product to wishlist           |
+  |/api/products/wishlist/<product_id>/ | DELETE   | Remove product from wishlist  |
+ 
+ ### Cart
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/cart/                        | GET     | Get cart items                    |
+  |/api/cart/                        | POST    | Add item to cart                  |
+  |/api/cart/<id>/                   | PATCH   | Update cart item                  |
+  |/api/cart/<id>/                   | DELETE  | Remove item from cart             | 
+  
+ ### Checkout & Orders
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/orders/checkout/             | POST    | Create order from cart & initiate Mpesa payment          |
+  |/api/orders/                      | GET     | List user orders     |
+  |/api/orders/<id>/                 | GET    | Get order details     |
+
+  ### Payments
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/payments/mpesa/             | POST    | Initiate Mpesa payment          |
+  |/api/payments/status/<order_id>/ | GET     | Check payment status    |
+
+   ### Shipments
+  |        Endpoint                  |  Method |    Description                    |
+  |:-------------------------------- | :-------|:----------------------------------|
+  |/api/shipments/             | GET     | List shipments          |
+  |/api/shipments/<id>/ | GET     | Shipment details    |
+  
