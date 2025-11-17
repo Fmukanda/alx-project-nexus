@@ -105,8 +105,8 @@ frontend/
      │  - Orders, Payments, Inventory   │
      └──────────────────────────────────┘
 ```
-
-![image alt]()
+## Database ERD 
+![image alt](Image/ERD_Image.png)
 
 ## ⚙️ Setup Instructions
 ### Prerequisites
