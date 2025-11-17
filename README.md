@@ -273,7 +273,7 @@ frontend/
  - **OrderHistoryPage** → _View past orders_
  - **AdminDashboard** → _KPIs, revenue charts, real-time order/payment updates_
 
-### Admin Dashboard (Real-Time)
+### 📈 Admin Dashboard (Real-Time)
  - **WebSocket:** /ws/admin/dashboard/
  - **Receives real-time updates on orders, payments, shipments**
 
