@@ -106,6 +106,8 @@ frontend/
      └──────────────────────────────────┘
 ```
 
+![image alt]()
+
 ## ⚙️ Setup Instructions
 ### Prerequisites
  - Python 3.9+
