@@ -96,6 +96,27 @@ class ApiClient {
     });
   }
 
+  // ==================== PASSWORD RESET ENDPOINTS ====================
+
+  async requestPasswordReset(email: string) {
+    return this.request('/auth/password/reset/', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    });
+  }
+
+  async resetPassword(uid: string, token: string, newPassword: string, confirmPassword: string) {
+    return this.request('/auth/password/reset/confirm/', {
+      method: 'POST',
+      body: JSON.stringify({
+        uid,
+        token,
+        new_password: newPassword,
+        re_new_password: confirmPassword,
+      }),
+    });
+  }
+  
   // ==================== USER PROFILE ENDPOINTS ====================
 
   async getProfile() {
@@ -413,4 +434,5 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient();
+
 
