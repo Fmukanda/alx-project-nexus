@@ -65,7 +65,73 @@ class ApiClient {
     });
   }
 
-  // ... (Keep all your existing auth, product, cart, order methods as they are)
+  // ==================== AUTH ENDPOINTS ====================
+
+  async login(email: string, password: string) {
+    return this.request('/auth/login/', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+    });
+  }
+
+  async register(userData: {
+    email: string;
+    username: string;
+    first_name: string;
+    last_name: string;
+    password: string;
+    password_confirm: string;
+    phone?: string;
+  }) {
+    return this.request('/auth/register/', {
+      method: 'POST',
+      body: JSON.stringify(userData),
+    });
+  }
+
+  async logout(refreshToken: string) {
+    return this.authenticatedRequest('/auth/logout/', {
+      method: 'POST',
+      body: JSON.stringify({ refresh: refreshToken }),
+    });
+  }
+
+  // ==================== USER PROFILE ENDPOINTS ====================
+
+  async getProfile() {
+    return this.authenticatedRequest('/users/me/');
+  }
+
+  // Add the missing updateProfile method
+  async updateProfile(userData: Partial<{
+    first_name: string;
+    last_name: string;
+    email: string;
+    phone: string;
+    address: string;
+    date_of_birth: string;
+    avatar: string;
+  }>) {
+    return this.authenticatedRequest('/users/me/', {
+      method: 'PATCH',
+      body: JSON.stringify(userData),
+    });
+  }
+
+  async changePassword(currentPassword: string, newPassword: string, confirmPassword: string) {
+    return this.authenticatedRequest('/auth/change_password/', {
+      method: 'POST',
+      body: JSON.stringify({
+        current_password: currentPassword,
+        new_password: newPassword,
+        new_password_confirm: confirmPassword,
+      }),
+    });
+  }
+
+  async getUserStats() {
+    return this.authenticatedRequest('/users/stats/');
+  }
 
   // ==================== PAYMENT ENDPOINTS ====================
 
@@ -210,45 +276,7 @@ class ApiClient {
     return this.authenticatedRequest(`/payments/refunds/${refundId}/`);
   }
 
-  // Payment Webhooks (for client-side verification)
-  async verifyWebhookSignature(payload: any, signature: string) {
-    return this.request('/payments/webhook/verify/', {
-      method: 'POST',
-      body: JSON.stringify({ payload, signature }),
-    });
-  }
-
-  // Payment Configuration
-  async getPaymentConfig() {
-    return this.request('/payments/config/');
-  }
-
-  // ==================== EXISTING METHODS (Keep all your existing methods below) ====================
-
-  // Auth endpoints
-  async login(email: string, password: string) {
-    return this.request('/auth/login/', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-    });
-  }
-
-  async register(userData: {
-    email: string;
-    username: string;
-    first_name: string;
-    last_name: string;
-    password: string;
-    password_confirm: string;
-    phone?: string;
-  }) {
-    return this.request('/auth/register/', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-    });
-  }
-
-  // ... (Keep all your existing methods for products, cart, orders, etc.)
+  // ==================== PRODUCT ENDPOINTS ====================
 
   async getProducts(params?: {
     category?: string;
@@ -276,6 +304,20 @@ class ApiClient {
     return this.request(`/products/?${queryParams}`);
   }
 
+  async getProduct(id: string) {
+    return this.request(`/products/${id}/`);
+  }
+
+  async getProductBySlug(slug: string) {
+    return this.request(`/products/${slug}/`);
+  }
+
+  async getFeaturedProducts() {
+    return this.request('/products/featured/');
+  }
+
+  // ==================== CART ENDPOINTS ====================
+
   async getCart() {
     return this.authenticatedRequest('/cart/');
   }
@@ -291,6 +333,27 @@ class ApiClient {
     });
   }
 
+  async updateCartItem(itemId: string, quantity: number) {
+    return this.authenticatedRequest(`/cart/items/${itemId}/`, {
+      method: 'PATCH',
+      body: JSON.stringify({ quantity }),
+    });
+  }
+
+  async removeCartItem(itemId: string) {
+    return this.authenticatedRequest(`/cart/items/${itemId}/`, {
+      method: 'DELETE',
+    });
+  }
+
+  async clearCart() {
+    return this.authenticatedRequest('/cart/clear/', {
+      method: 'POST',
+    });
+  }
+
+  // ==================== ORDER ENDPOINTS ====================
+
   async createOrder(orderData: {
     shipping_address: string;
     billing_address: string;
@@ -303,7 +366,29 @@ class ApiClient {
     });
   }
 
-  // ... (Continue with all your existing methods)
+  async getOrders(params?: {
+    page?: number;
+    status?: string;
+    ordering?: string;
+  }) {
+    const queryParams = new URLSearchParams();
+    
+    if (params) {
+      Object.entries(params).forEach(([key, value]) => {
+        if (value !== undefined && value !== null && value !== '') {
+          queryParams.append(key, value.toString());
+        }
+      });
+    }
+
+    return this.authenticatedRequest(`/orders/?${queryParams}`);
+  }
+
+  async getOrder(orderId: string) {
+    return this.authenticatedRequest(`/orders/${orderId}/`);
+  }
+
+  // ... add any other missing methods you need
 }
 
 export const apiClient = new ApiClient();
