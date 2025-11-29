@@ -388,7 +388,29 @@ class ApiClient {
     return this.authenticatedRequest(`/orders/${orderId}/`);
   }
 
-  // ... add any other missing methods you need
+  async getWishlist() {
+    return this.authenticatedRequest('/wishlist/');
+  }
+
+  async addToWishlist(productId: string) {
+    return this.authenticatedRequest('/wishlist/', {
+      method: 'POST',
+      body: JSON.stringify({ product_id: productId }),
+    });
+  }
+
+  async removeFromWishlist(productId: string) {
+    return this.authenticatedRequest(`/wishlist/${productId}/`, {
+      method: 'DELETE',
+    });
+  }
+
+  async clearWishlist() {
+    return this.authenticatedRequest('/wishlist/clear/', {
+      method: 'POST',
+    });
+  }
 }
 
 export const apiClient = new ApiClient();
+
