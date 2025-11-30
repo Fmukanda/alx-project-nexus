@@ -187,7 +187,7 @@ frontend/
  - Run backend migrations: docker-compose exec backend python manage.py migrate
  - Create superuser: docker-compose exec backend python manage.py createsuperuser
 
-## 📦 API Endpoints
+## 📦 Backend API Endpoints
 ### 📌 1. Authentication & Users (/api/auth/)
 #### 🔐 User Endpoints
   | Method | Endpoint                | Description              |
