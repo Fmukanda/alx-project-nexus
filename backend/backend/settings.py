@@ -151,6 +151,7 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "https://alx-project-nexus-42oi.onrender.com",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
@@ -164,3 +165,4 @@ MPESA_PASSKEY = os.getenv('MPESA_PASSKEY', '')
 MPESA_CALLBACK_URL = os.getenv('MPESA_CALLBACK_URL', 'https://yourdomain.com/api/payments/mpesa/callback/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
