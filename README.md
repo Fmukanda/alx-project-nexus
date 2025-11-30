@@ -188,72 +188,125 @@ frontend/
  - Create superuser: docker-compose exec backend python manage.py createsuperuser
 
 ## 📦 API Endpoints
-### 1. Authentication (JWT)
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/auth/register/               | POST    | Create new user                   |
-  |/api/auth/login/                  | POST    | Authenticate user & get JWT token |
-  |/api/auth/password-reset/         | POST    | Request password reset            |
-  |/api/auth/password-reset/confirm/ | POST    | Reset password with token         |
+### 📌 1. Authentication & Users (/api/auth/)
+#### 🔐 User Endpoints
+  | Method | Endpoint                | Description              |
+  | ------ | ----------------------- | ------------------------ |
+  | GET    | `/api/auth/users/`      | List all users           |
+  | POST   | `/api/auth/users/`      | Create/register new user |
+  | GET    | `/api/auth/users/{id}/` | Retrieve a user          |
+  | PUT    | `/api/auth/users/{id}/` | Update a user            |
+  | PATCH  | `/api/auth/users/{id}/` | Partial update           |
+  | DELETE | `/api/auth/users/{id}/` | Delete a user            |
+#### 🔑 Authentication Endpoints
+  | Method | Endpoint                   | Description                   |
+  | ------ | -------------------------- | ----------------------------- |
+  | POST   | `/api/auth/auth/`          | Login (custom authentication) |
+  | GET    | `/api/auth/auth/`          | Get logged-in user profile    |
+  | POST   | `/api/auth/token/refresh/` | Refresh expired JWT token     |
+
   
- ### 2. Products & Categories
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/products/                    | GET     | List all products                 |
-  |/api/products/?category=<slug>    | GET     | Filter by category                |
-  |/api/products/<id>/               | GET     | Product details                   |
-  |/api/products/categories/         | GET     | List categories                   | 
-  |/api/products/categories/         | POST    | Create category (admin only)      | 
+ ### 🛒 2. Products Module (/api/products/)
+ #### 📂 Categories
+  | Method | Endpoint                         | Description          |
+  | ------ | -------------------------------- | -------------------- |
+  | GET    | `/api/products/categories/`      | List categories      |
+  | POST   | `/api/products/categories/`      | Create category      |
+  | GET    | `/api/products/categories/{id}/` | View single category |
+  | PUT    | `/api/products/categories/{id}/` | Update category      |
+  | PATCH  | `/api/products/categories/{id}/` | Partial update       |
+  | DELETE | `/api/products/categories/{id}/` | Delete category      |
+ #### 🧳 Products
+  | Method | Endpoint              | Description      |
+  | ------ | --------------------- | ---------------- |
+  | GET    | `/api/products/`      | List products    |
+  | POST   | `/api/products/`      | Create a product |
+  | GET    | `/api/products/{id}/` | Product details  |
+  | PUT    | `/api/products/{id}/` | Update product   |
+  | PATCH  | `/api/products/{id}/` | Partial update   |
+  | DELETE | `/api/products/{id}/` | Delete product   |
 
-### 3. Reviews
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/products/<id>/reviews/       | GET     | List reviews for product          |
-  |/api/products/<id>/reviews/       | POST    | Create review (authenticated)     |
 
-### 4. Wishlist
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/products/wishlist/           | GET     | Get user wishlist                 |
-  |/api/products/wishlist/           | POST    | Add product to wishlist           |
-  |/api/products/wishlist/<product_id>/ | DELETE   | Remove product from wishlist  |
+### 🧾 3. Orders Module (/api/orders/)
+  | Method | Endpoint            | Description     |
+  | ------ | ------------------- | --------------- |
+  | GET    | `/api/orders/`      | List orders     |
+  | POST   | `/api/orders/`      | Create an order |
+  | GET    | `/api/orders/{id}/` | Retrieve order  |
+  | PUT    | `/api/orders/{id}/` | Update order    |
+  | PATCH  | `/api/orders/{id}/` | Partial update  |
+  | DELETE | `/api/orders/{id}/` | Delete order    |
+
+
+### ⭐ 4. Reviews Module (/api/reviews/)
+  | Method | Endpoint             | Description     |
+  | ------ | -------------------- | --------------- |
+  | GET    | `/api/reviews/`      | List reviews    |
+  | POST   | `/api/reviews/`      | Create review   |
+  | GET    | `/api/reviews/{id}/` | Retrieve review |
+  | PUT    | `/api/reviews/{id}/` | Update review   |
+  | PATCH  | `/api/reviews/{id}/` | Partial update  |
+  | DELETE | `/api/reviews/{id}/` | Delete review   |
+
  
- ### 5. Cart
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/cart/                        | GET     | Get cart items                    |
-  |/api/cart/                        | POST    | Add item to cart                  |
-  |/api/cart/<id>/                   | PATCH   | Update cart item                  |
-  |/api/cart/<id>/                   | DELETE  | Remove item from cart             | 
+ ### 📊 5. Analytics Module (/api/analytics/)
+  | Method | Endpoint                               | Description                  |
+  | ------ | -------------------------------------- | ---------------------------- |
+  | GET    | `/api/analytics/dashboard/stats/`      | Dashboard summary statistics |
+  | GET    | `/api/analytics/sales/overview/`       | Sales overview               |
+  | GET    | `/api/analytics/products/performance/` | Product performance metrics  |
+  | GET    | `/api/analytics/customer/behavior/`    | Customer behavior insights   |
+  | GET    | `/api/analytics/engagement/metrics/`   | Engagement metrics           |
+ 
   
- ### 6. Checkout & Orders
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/orders/checkout/             | POST    | Create order from cart & initiate Mpesa payment          |
-  |/api/orders/                      | GET     | List user orders     |
-  |/api/orders/<id>/                 | GET    | Get order details     |
+ ### 💳 6. Payments Module (/api/payments/)
+ #### 🧾 Payment Methods
+  | Method | Endpoint                              | Description             |
+  | ------ | ------------------------------------- | ----------------------- |
+  | GET    | `/api/payments/payment-methods/`      | List payment methods    |
+  | POST   | `/api/payments/payment-methods/`      | Create payment method   |
+  | GET    | `/api/payments/payment-methods/{id}/` | Retrieve payment method |
+  | PUT    | `/api/payments/payment-methods/{id}/` | Update                  |
+  | PATCH  | `/api/payments/payment-methods/{id}/` | Partial update          |
+  | DELETE | `/api/payments/payment-methods/{id}/` | Delete                  |
+#### 💰 Payments
+  | Method | Endpoint                       | Description        |
+  | ------ | ------------------------------ | ------------------ |
+  | GET    | `/api/payments/payments/`      | List payments      |
+  | POST   | `/api/payments/payments/`      | Create new payment |
+  | GET    | `/api/payments/payments/{id}/` | Retrieve payment   |
+  | PUT    | `/api/payments/payments/{id}/` | Update payment     |
+  | PATCH  | `/api/payments/payments/{id}/` | Partial update     |
+  | DELETE | `/api/payments/payments/{id}/` | Delete payment     |
+#### 💸 Refunds
+  | Method | Endpoint                      | Description     |
+  | ------ | ----------------------------- | --------------- |
+  | GET    | `/api/payments/refunds/`      | List refunds    |
+  | POST   | `/api/payments/refunds/`      | Create refund   |
+  | GET    | `/api/payments/refunds/{id}/` | Retrieve refund |
+  | PUT    | `/api/payments/refunds/{id}/` | Update refund   |
+  | PATCH  | `/api/payments/refunds/{id}/` | Partial update  |
+  | DELETE | `/api/payments/refunds/{id}/` | Delete refund   |
+#### 🪝 Webhooks
+  | Method | Endpoint                 | Description                      |
+  | ------ | ------------------------ | -------------------------------- |
+  | POST   | `/api/payments/webhook/` | Handle external payment webhooks |
 
-  ### 7. Payments
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/payments/mpesa/             | POST    | Initiate Mpesa payment          |
-  |/api/payments/status/<order_id>/ | GET     | Check payment status    |
 
-   ### 8. Shipments
-  |        Endpoint                  |  Method |    Description                    |
-  |:-------------------------------- | :-------|:----------------------------------|
-  |/api/shipments/             | GET     | List shipments          |
-  |/api/shipments/<id>/ | GET     | Shipment details    |
+  ### 📱 7. M-Pesa Integration
+  | Method | Endpoint                                                    | Description                           |
+  | ------ | ----------------------------------------------------------- | ------------------------------------- |
+  | POST   | `/api/payments/mpesa/initiate/`                             | Initiate M-Pesa STK Push              |
+  | POST   | `/api/payments/mpesa/callback/`                             | Safaricom STK callback URL            |
+  | GET    | `/api/payments/mpesa/transactions/{transaction_id}/status/` | Check M-Pesa transaction status       |
+  | GET    | `/api/payments/mpesa/payment-methods/`                      | List supported M-Pesa payment methods |
 
-### 🔧 Backend API Endpoints
- - **apps/users/** → _authentication (JWT, reset)_
- - **apps/products/** → _models: Product, Category, Review_
- - **apps/wishlist/** → _user wishlist logic_
- - **apps/cart/** → _cart CRUD + server-side inventory check_
- - **apps/orders/** → _checkout & order creation_
- - **apps/payments/** → _Mpesa integration_
- - **apps/shipments/** → _shipment tracking_
- - **apps/notifications/** → _WebSockets for real-time updates_
+
+   ### 🧩 8. Admin
+  | Method | Endpoint  | Description            |
+  | ------ | --------- | ---------------------- |
+  | GET    | `/admin/` | Django admin interface |
+
 
 ### 🔧 Frontend API Endpoints
  - **components/products/** → _ProductCard, ReviewForm_
