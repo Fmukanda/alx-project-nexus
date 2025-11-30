@@ -166,3 +166,4 @@ MPESA_CALLBACK_URL = os.getenv('MPESA_CALLBACK_URL', 'https://yourdomain.com/api
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
