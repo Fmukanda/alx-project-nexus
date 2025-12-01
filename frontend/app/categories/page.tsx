@@ -73,7 +73,7 @@ const categories = [
     id: 'premium',
     name: 'Premium Collection',
     description: 'Exclusive luxury items for the discerning customer',
-    image: 'https://unsplash.com/photos/woman-in-gray-glitter-gown-standing-beside-tree-IeHLttCrsXE',
+    image: '/images/premium-wedding.jpg',
     icon: Crown,
     count: 6,
     featured: true
@@ -82,7 +82,7 @@ const categories = [
     id: 'sale',
     name: 'Sale Items',
     description: 'Great deals on selected fashion items',
-    image: 'https://unsplash.com/photos/woman-in-red-and-white-floral-dress-rygrPAseHmY',
+    image: '/images/summer-dress.jpg',
     icon: Heart,
     count: 25
   },
@@ -498,3 +498,4 @@ export default function CategoriesPage() {
   );
 
 }
+
