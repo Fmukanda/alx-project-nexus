@@ -392,7 +392,7 @@ export default function CategoriesPage() {
 
         .category-image-full {
           width: 100%;
-          height: 150%;
+          height: 100%;
           object-fit: cover;
           transition: transform 0.3s ease;
         }
@@ -498,6 +498,7 @@ export default function CategoriesPage() {
   );
 
 }
+
 
 
 
