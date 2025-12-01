@@ -75,7 +75,7 @@ export function Header() {
             display: 'flex',
             alignItems: 'center',
           }}>
-            FashionStore
+            HangazoShop
           </Link>
 
           {/* Navigation - Desktop */}
@@ -444,4 +444,5 @@ export function Header() {
       </div>
     </header>
   );
+
 }
