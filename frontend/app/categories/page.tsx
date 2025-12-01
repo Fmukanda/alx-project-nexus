@@ -73,7 +73,7 @@ const categories = [
     id: 'premium',
     name: 'Premium Collection',
     description: 'Exclusive luxury items for the discerning customer',
-    image: 'https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=400&h=300&fit=crop',
+    image: 'https://unsplash.com/photos/woman-in-gray-glitter-gown-standing-beside-tree-IeHLttCrsXE',
     icon: Crown,
     count: 6,
     featured: true
@@ -82,7 +82,7 @@ const categories = [
     id: 'sale',
     name: 'Sale Items',
     description: 'Great deals on selected fashion items',
-    image: 'https://images.unsplash.com/photo-1601924582970-9238bcb495d9?w=400&h=300&fit=crop',
+    image: 'https://unsplash.com/photos/woman-in-red-and-white-floral-dress-rygrPAseHmY',
     icon: Heart,
     count: 25
   },
@@ -496,4 +496,5 @@ export default function CategoriesPage() {
       `}</style>
     </div>
   );
+
 }
