@@ -114,7 +114,7 @@ export default function CategoriesPage() {
   // Helper function to get image URL safely
   const getImageUrl = (image: any): string => {
     if (isString(image)) return image;
-    return `${category.image}`;
+    return '/images/placeholder-category.jpg';
   };
 
   // Handle image loading errors
@@ -498,6 +498,7 @@ export default function CategoriesPage() {
   );
 
 }
+
 
 
 
