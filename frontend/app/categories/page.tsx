@@ -32,7 +32,7 @@ const categories = [
     id: 'shoes',
     name: 'Shoes',
     description: 'Step out in confidence with our footwear collection',
-    image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop',
+    image: '/images/women-footwear.jpg',
     icon: ShoppingBag,
     count: 18,
     featured: true
@@ -498,6 +498,7 @@ export default function CategoriesPage() {
   );
 
 }
+
 
 
 
