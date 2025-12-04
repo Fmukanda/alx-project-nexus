@@ -106,7 +106,7 @@ frontend/
      └──────────────────────────────────┘
 ```
 ## 🗃️ Database Schema
-![image alt](Image/ERD_Image.png)
+![image alt](ERD_Image.png)
 
 ## ⚙️ Setup Instructions
 ### Prerequisites
